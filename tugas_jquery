@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contoh AJAX dengan jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.ajax({
+        url: "data.php",
+        type: "GET",
+        success: function(data) {
+          var rows = "";
+          $.each(data, function(index, value) {
+            rows += "<tr><td>" + value.id + "</td><td>" + value.nama + "</td><td>" + value.email + "</td></tr>";
+          });
+          $("#tabel-mahasiswa tbody").html(rows);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Data Mahasiswa</h1>
+  <table id="tabel-mahasiswa">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</body>
+</html>
